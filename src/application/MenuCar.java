@@ -104,6 +104,11 @@ private void updateCar() throws SQLException {
 	
 }
 
+private void deleteCar() throws SQLException {
+	System.out.print("Enter car id to delete:");
+	int id = Integer.parseInt(scanner.nextLine());
+	rentcarDao.deleteCarById(id);
+}
 	
 }	
 	

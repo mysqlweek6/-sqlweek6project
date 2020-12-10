@@ -8,9 +8,12 @@ import java.util.Date;
 public class RentCarDao {
 	
 	private Connection connection;
+	private TimerentCarDao timerentCarDao;
+	private CustomerCarDao customerCarDao;
 	private final String CREATE_NEW_CAR_QUERY= "INSERT INTO rentcars(car_make, car_model, "
 			+ "car_year, car_miles ) VALUES (?, ?, ?, ?)";
 	private final String UPDATE_CAR_MILES = "UPDATE rentcars SET car_miles = (car_miles + ?) WHERE id = ?";
+	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM rentcars WHERE id = ?";
 	
 	// This connection need to be done at any DAO class to be able to connect to the Connection class.
 	public RentCarDao() {
@@ -45,5 +48,13 @@ public class RentCarDao {
 		
 	}
 
+	public void deleteCarById(int id) throws SQLException {
+		timerentCarDao.deleteCarById(id);
+		customerCarDao.deleteCarById(id);
+		PreparedStatement ps = connection.prepareStatement(DELETE_CAR_BY_ID_QUERY);
+		ps.setInt(1, id);
+		ps.executeUpdate();
+	}
 
+	
 }
