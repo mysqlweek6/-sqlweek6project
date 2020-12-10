@@ -38,7 +38,7 @@ public class MenuCar {
 			} else if (selection.equals("3")) {
 				updateCar();
 			}else if (selection.equals("4")) {
-				//deleteCar();
+				deleteCar();
 			//}else if (selection.equals("5")) {
 				//displayCustemerbyCar();
 			//}else if (selection.equals("6")) {
